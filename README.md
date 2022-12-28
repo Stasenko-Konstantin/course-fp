@@ -17,7 +17,7 @@
 функциональный подход к решению программистских задач
 практически независимо от применяемого вами языка
 программирования. Для этого в курсе будут использованы
-следующие языки программирования: Python, [Scala](https://ru.wikipedia.org/wiki/Scala_(%D1%8F%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)).
+следующие ЯП: Python, [Racket](https://ru.wikipedia.org/wiki/Racket_(%D1%8F%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)).
 
 Помимо теоретической части курса вы также ознакомитесь и научитесь применять следующие техники и приемы:
 - Использование рекурсии (линейной, разветвляющейся и хвостовой).
@@ -42,9 +42,9 @@ git clone https://github.com/Stasenko-Konstantin/course-fp.git
 или же скачать zip-архив по [этой ссылке](https://github.com/Stasenko-Konstantin/course-fp/archive/refs/heads/main.zip)
 
 ## Содержание
-1. [Введение](src/main/scala/l_0/README.md)
-2. [Знакомство со Scala, JVM и IDE](src/main/scala/l_1/README.md)
-3. [Первые шаги - функции](src/main/scala/l_2/README.md)
-3. [Знакомство с рекурсией](src/main/scala/l_3/README.md)
+1. [Введение](src/l_0/README.md)
+2. [Знакомство с Racket и DrRacket](src/l_1/README.md)
+3. [Первые шаги - функции](src/l_2/README.md)
+3. [Знакомство с рекурсией](src/l_3/README.md)
 
-[дальше](src/main/scala/l_0/README.md)
+[дальше](src/l_0/README.md)
