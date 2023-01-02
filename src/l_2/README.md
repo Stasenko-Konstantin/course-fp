@@ -101,7 +101,7 @@ def sum(n):
         sum += i
     return sum
 ```
-```scala
+```racket
 ; racket
 (define (sum n)
   (let ([sum 0])
@@ -133,14 +133,14 @@ lambda param1, param2, ..., paramn: expr
 
 Также считаю важным отметить тот момент, что лямбды в Python ограничены, в них нельзя указывать произвольное 
 кол-во выражений. Давайте теперь сравним с Racket:
-```scala
+```racket
 (lambda (param1 param2 ... paramn) expr)
 ; или
 (λ (param1 param2 ... paramn) expr)
 ```
 Тут также используется ключевое слово lambda (или символ лямбда - λ). После в скобках указывается
 список параметров. И наконец тело функции. В отличие от Python, в Racket можно написать например следующий код:
-```scala
+```racket
 (λ (x)
   (displayln (* x 10))
   (+ x 1))

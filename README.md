@@ -44,6 +44,8 @@ git clone https://github.com/Stasenko-Konstantin/course-fp.git
 ## Содержание
 1. [Введение](src/l_0/README.md)
 2. [Знакомство с Racket и DrRacket](src/l_1/README.md)
+   1. [Установка и настройка среды DrRacket](src/l_1/l_0/README.md)
+   2. [Пробуем Racket на вкус](src/l_1/l_1/README.md) 
 3. [Первые шаги - функции](src/l_2/README.md)
 3. [Знакомство с рекурсией](src/l_3/README.md)
 
