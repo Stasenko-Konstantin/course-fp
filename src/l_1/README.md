@@ -32,4 +32,6 @@ def sum(n1: Int, n2: Int): Int = n1 + n2
 
 [содержание](../../README.md)
 <br>
+[назад](../l_0/README.md)
+<br>
 [дальше](l_0/README.md)
