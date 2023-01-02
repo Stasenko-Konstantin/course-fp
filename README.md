@@ -42,6 +42,7 @@ git clone https://github.com/Stasenko-Konstantin/course-fp.git
 или же скачать zip-архив по [этой ссылке](https://github.com/Stasenko-Konstantin/course-fp/archive/refs/heads/main.zip)
 
 ## Содержание
+0. [Шпаргалка](src/Cheatsheet.md)
 1. [Введение](src/l_0/README.md)
 2. [Знакомство с Racket и DrRacket](src/l_1/README.md)
    1. [Установка и настройка среды DrRacket](src/l_1/l_0/README.md)
