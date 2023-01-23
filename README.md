@@ -4,7 +4,10 @@
 <br>
 Год: 2022 - 2023 
 <br>
-Почта: stasenko.kost@yandex.ru<br><br>
+Github: Stasenko-Konstantin
+<br>
+Почта: stasenko.kost@yandex.ru <br>
+~~пишите, с нетерпением жду любых откликов~~<br><br>
 
 Учебный курс предназначен для курсантов 2-го и 3-го курсов очной и заочной форм обучения
 по специальности "Программирование в компьютерных системах" 
@@ -40,14 +43,6 @@
 git clone https://github.com/Stasenko-Konstantin/course-fp.git
 ```
 или же скачать zip-архив по [этой ссылке](https://github.com/Stasenko-Konstantin/course-fp/archive/refs/heads/main.zip)
+<br><br>
 
-## Содержание
-0. [Шпаргалка](src/Cheatsheet.md)
-1. [Введение](src/l_0/README.md)
-2. [Знакомство с Racket и DrRacket](src/l_1/README.md)
-   1. [Установка и настройка среды DrRacket](src/l_1/l_0/README.md)
-   2. [Пробуем Racket на вкус](src/l_1/l_1/README.md) 
-3. [Первые шаги - функции](src/l_2/README.md)
-3. [Знакомство с рекурсией](src/l_3/README.md)
-
-[дальше](src/l_0/README.md)
+Крайне советую переходить по ссылкам, там очень много всего интересного.

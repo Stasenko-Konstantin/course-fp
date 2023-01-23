@@ -1,0 +1,785 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>course-fp</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Вступительное слово</a></li><li class="chapter-item expanded "><a href="Cheatsheet.html"><strong aria-hidden="true">2.</strong> Шпаргалка</a></li><li class="chapter-item expanded "><a href="l_0/index.html"><strong aria-hidden="true">3.</strong> Введение</a></li><li class="chapter-item expanded "><a href="l_1/index.html"><strong aria-hidden="true">4.</strong> Знакомство с Racket и DrRacket</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="l_1/l_0/index.html"><strong aria-hidden="true">4.1.</strong> Установка и настройка среды DrRacket</a></li><li class="chapter-item expanded "><a href="l_1/l_1/index.html"><strong aria-hidden="true">4.2.</strong> Пробуем Racket на вкус</a></li></ol></li><li class="chapter-item expanded "><a href="l_2/index.html"><strong aria-hidden="true">5.</strong> Первые шаги - функции</a></li><li class="chapter-item expanded "><a href="l_3/index.html"><strong aria-hidden="true">6.</strong> Знакомство с рекурсией</a></li><li class="chapter-item expanded "><a href="end/Learn.html"><strong aria-hidden="true">7.</strong> Дополнительное изучение</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">course-fp</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Курс-по-основам-функционального-программирования-ФП"><a class="header" href="#Курс-по-основам-функционального-программирования-ФП">Курс по основам функционального программирования (ФП)</a></h1>
+<p>Автор: Стасенко К.Ю. - выпускник ТАТК ГА 2022 г.
+<br>
+Год: 2022 - 2023 
+<br>
+Github: Stasenko-Konstantin
+<br>
+Почта: stasenko.kost@yandex.ru <br>
+<del>пишите, с нетерпением жду любых откликов</del><br><br></p>
+<p>Учебный курс предназначен для курсантов 2-го и 3-го курсов очной и заочной форм обучения
+по специальности &quot;Программирование в компьютерных системах&quot; 
+в качестве дополнительной учебной программы к
+предмету &quot;Основы программирования&quot;, а также просто всем интересующимся.</p>
+<p>После прохождения данного курса вы освоите дополнительные
+профессиональные компетенции для осуществления своей
+профессиональной деятельности. Научитесь применять
+функциональный подход к решению программистских задач
+практически независимо от применяемого вами языка
+программирования. Для этого в курсе будут использованы
+следующие ЯП: Python, <a href="https://ru.wikipedia.org/wiki/Racket_(%D1%8F%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)">Racket</a>.</p>
+<p>Помимо теоретической части курса вы также ознакомитесь и научитесь применять следующие техники и приемы:</p>
+<ul>
+<li>Использование рекурсии (линейной, разветвляющейся и хвостовой).</li>
+<li>Функции высших порядков (ФВП).</li>
+<li>Основные функциональные комбинаторы (map, filter, fold и пр.).</li>
+<li>Использование замыканий (в том числе для эмуляции средств ООП)</li>
+<li>и дефункционализацию (преобразование функционального кода в императивный/объектный)</li>
+</ul>
+<h2 id="Требования-к-курсанту"><a class="header" href="#Требования-к-курсанту">Требования к курсанту</a></h2>
+<p>От вас требуется базовое знание языка программирования Python и компьютерной грамотности, а именно:</p>
+<ul>
+<li>Базовые типы данных (int, float, bool, str  и пр.).</li>
+<li>Базовые управляющие конструкция (if, while, for).</li>
+<li>Использование именованных функций (def). Плюсом будет знание об анонимных лямбда-функциях.</li>
+<li>Умение пользоваться консолью (командной строкой).</li>
+</ul>
+<hr />
+<p>Вы можете скачать все материалы курса и проходить обучение на своей локальной
+машине. Для этого вы можете воспользоваться утилитой <a href="https://ru.wikipedia.org/wiki/Git">Git</a>
+следующим образом:</p>
+<pre><code class="language-bash">git clone https://github.com/Stasenko-Konstantin/course-fp.git
+</code></pre>
+<p>или же скачать zip-архив по <a href="https://github.com/Stasenko-Konstantin/course-fp/archive/refs/heads/main.zip">этой ссылке</a>
+<br><br></p>
+<p>Крайне советую переходить по ссылкам, там очень много всего интересного.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Шпаргалка"><a class="header" href="#Шпаргалка">Шпаргалка</a></h1>
+<h3 id="Части-абстрактного-синтаксиса"><a class="header" href="#Части-абстрактного-синтаксиса">Части абстрактного синтаксиса:</a></h3>
+<ul>
+<li><code>f</code> - имя функции</li>
+<li><code>x</code> - параметр функции</li>
+<li><code>num</code> - число</li>
+<li><code>var</code> - переменная</li>
+<li><code>expr</code> - любое допустимое выражение*</li>
+<li><code>stmt</code> - любой допустимый набор инструкций*</li>
+<li><code>cond</code> - любое допустимое булевское выражение</li>
+<li><code>...</code> - возможное повторение предыдущего элемента произвольное кол-во раз</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Expr</th><th>Python</th><th>Racket</th></tr></thead><tbody>
+<tr><td>Арифметика</td><td><code>num</code> + <code>num</code> + <code>num</code> <code>...</code></td><td>(+ <code>num</code> <code>num</code> <code>num</code> <code>...</code>)</td></tr>
+<tr><td>Глобальное <br>присваивание</td><td><code>var</code> = <code>expr</code></td><td>(define <code>var</code> <code>expr</code>)</td></tr>
+<tr><td>Локальное <br>присваивание**</td><td><code>var</code> = <code>expr</code></td><td>(let ([<code>var</code> <code>expr</code>] <code>...</code>)<br>  <code>expr</code>)</td></tr>
+<tr><td>Объявление<br>функции</td><td>def <code>f</code>(<code>x</code>, <code>...</code>):<br>    <code>stmt</code></td><td>(define (<code>f</code> <code>x</code> <code>...</code>)<br>  <code>expr</code><br>  <code>...</code>)</td></tr>
+<tr><td>Лямбды</td><td>lambda <code>x</code>, <code>...</code>: <code>expr</code></td><td>(lambda (<code>x</code> <code>...</code>) <code>expr</code> <code>...</code>)</td></tr>
+<tr><td>Вызов функции</td><td><code>f</code>(<code>x</code>)</td><td>(<code>f</code> <code>x</code>)</td></tr>
+<tr><td>Истина</td><td>True</td><td>#t</td></tr>
+<tr><td>Ложь</td><td>False</td><td>#f</td></tr>
+<tr><td>И</td><td><code>cond</code> and <code>cond</code></td><td>(and <code>cond</code> <code>...</code>)</td></tr>
+<tr><td>ИЛИ</td><td><code>cond</code> or <code>cond</code></td><td>(or <code>cond</code> <code>...</code>)</td></tr>
+<tr><td>НЕ</td><td>not <code>cond</code></td><td>(not <code>cond</code>)</td></tr>
+<tr><td>Последовательный<br>набор инструкций</td><td><code>stmt</code></td><td>(begin<br>  <code>expr</code><br>  <code>...</code>)</td></tr>
+<tr><td>Условное<br>ветвление</td><td>if <code>cond</code>:<br>    <code>stmt</code><br>else:<br>    <code>stmt</code></td><td>(if <code>cond</code><br>  <code>expr</code><br>  <code>expr</code>)</td></tr>
+<tr><td>Условное<br>ветвление</td><td>if <code>cond</code>:<br>    <code>stmt</code><br>elif <code>cond</code>:<br>    <code>stmt</code><br><code>...</code><br>else:<br>    <code>stmt</code></td><td>(cond<br>  [<code>cond</code> <code>expr</code>]<br>  <code>...</code><br>  [else <code>expr</code>])</td></tr>
+</tbody></table>
+</div>
+<p><em>*</em> <a href="https://stackoverflow.com/questions/4728073/what-is-the-difference-between-an-expression-and-a-statement-in-python">Обсуждение на stackoverflow</a>
+о разнице между выражениями и инструкциями, как раз применительно к Python, на английском.
+И <a href="https://docs.racket-lang.org/guide/syntax-overview.html">документация Racket</a>
+по этому же вопросу, тоже на английском. <br>
+<em>**</em> Переменные доступные в теле функции. В случае Racket объявленные в <code>let</code> переменные доступны только в теле этого
+самого <code>let</code>, т.е. в <code>expr</code>. <br></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Введение"><a class="header" href="#Введение">Введение</a></h1>
+<p>“The programmers of tomorrow are the wizards of the future.
+You're going to look like you have magic powers compared to
+everyone else.” <br>
+Гейб Ньюэлл - основатель Valve</p>
+<p>“The programs we use to conjure processes are like a
+sorcerer's spells. They are carefully composed from symbolic
+expressions in arcane and esoteric programming languages.” <br>
+Гарольд Абельсон и Джеральд Джей Сассман, Стуктура и Интерпретация Компьютерных Программ</p>
+<hr />
+<p>Перед тем как мы приступим к &quot;скучным&quot; теоретезированиям и рассмотрениям практической стороны вопроса
+хотелось бы сказать пару слов, поделиться своим мнением так сказать. Для меня функциональное 
+программирование это что-то необычное, можно даже сказать волшебное. И не для меня одного
+на самом деле. Одна из главных книг по ФП (и Lisp'у) - SICP, имеет в качестве обложки
+следующую <a href="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books/tree/master/SICP">иллюстрацию</a>:</p>
+<p><img src="l_0/../img/l_0/1.jpg" alt="" /></p>
+<p>которая наглядно демонстрирует то как воспринималось (и, наверное, воспринимается до сих пор) как ФП в целом,
+так и Lisp в частности. Я хочу чтобы этот учебный материал стал для вас входом в этот интересный
+функциональный мир (или наверное правильней <a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">страну</a>).
+Когда пишешь функциональный код, кажется будто ты решаешь головоломку, порой извилины довольно приятно
+скрипят при этом) А если этот код еще и обрамлен в скобочки, то кажется будто ты действительно
+какой-то <a href="https://qqq.com.ua/articles-2/zaimstvovaniya/lisp-pobezhdaya-posredstvennost/">хакер</a>-волшебник.
+Новый взгляд на решение программистских задач и проблем может дать вам практическую альтернативу тому к чему вы уже
+привыкли.  Это может испортить вас (так же как и меня когда-то)) Однажды взглянув на вещи через функциональную призму
+вы уже не сможете просто так вернуться к другим языкам, не требуя от них той же гибкости в которой вы теперь нуждаетесь.</p>
+<hr />
+<p>Впрочем, покончим с сантиментами и приступим уже к делу. Пробежимся кратко по сухой и скучноватой части
+и займемся чем поинтересней. Начать думаю стоит с истории - истоками
+ФП принято считать изобретение Алонзо Черчем в 30-х годах прошлого века формальной системы
+именуемой <a href="https://ru.wikipedia.org/wiki/%D0%9B%D1%8F%D0%BC%D0%B1%D0%B4%D0%B0-%D0%B8%D1%81%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5">лямбда-исчислением (λ-calculus)</a>. Оно предназначено для формализации и анализа понятия вычислимости, ровно как 
+и Машина Тьюринга. Оба эти формализма легли в основу языков программирования и
+используемых ими парадигм. Так Машина Тьюринга представляет собой
+императивную парадигму, а лямбда-исчисление - функциональную.
+<br>
+<br>
+Существует множество вариаций лямбда-исчисления, но в базе своей
+оно про анонимные функции, т.е. лямбды. В общем виде
+они выглядят так: </p>
+<pre><code>λx.xy
+</code></pre>
+<p>что эквивалентно следующей конструкции языка Python:</p>
+<pre><code class="language-python">lambda x: x(y)
+</code></pre>
+<p>Как мы видим символ <code>λ</code> заменили на <code>lambda</code>, вместо
+<code>.</code> используется <code>:</code>, а применение функции требует
+круглых скобок. Помимо синтаксических различий тут
+также можно увидеть одну интересную семантическую деталь -
+наша анонимная функция принимает в качестве параметра
+другую функцию, это и называется функциями высших порядков (ФВП).
+А такие объекты которые мы можем также свободно использовать,
+как и остальные, более привычные нам, как например числа и строки,
+называются объектами или гражданами первого класса, или
+первоклассными объектами. Это все более подробно мы обсудим позже.
+<br>
+<br>
+Появление лямбда-исчисления вызвало интерес не только
+со стороны математиков, но и у программистов, что неудивительно -
+раньше если ты был программистом, то, скорее всего был и математиком.
+В пользу этого говорит тот факт, что первым языком программирования был
+создан Fortran - язык для научных вычислений который применяется до сих пор.
+Вторым же языком программирования стал <a href="https://ru.wikipedia.org/wiki/%D0%9B%D0%B8%D1%81%D0%BF">Lisp</a> и он в некоторой
+степени основывался как раз на лямбда-исчислении. Эти два языка очень сильно 
+отличались друг от друга, но они оба сильно повлияли на
+будущее как языков программирования, так и самого программирования в целом.
+Так например именно в Lisp`е впервые реализовали такие вещи как:
+динамическая типизация, сборка мусора, REPL, замыкания и пр.
+Многие вещи в которых Lisp стал первопроходцем легли в основу
+не только функциональных языков, но и многих других и уже
+привычны нам, осталось только научиться ими пользоваться.
+<br>
+<br>
+На данный момент Lisp сильно изменился. Лиспами называется уже не один
+язык, а целое семейство, среди которых наиболее видные: Common Lisp, 
+Scheme и Clojure. Они все разные, но у них общее начало, то что делает их
+лиспами.</p>
+<p>TODO: допиши абзац
+<br>
+<br>
+Еще одной важной вехой в истории ФП можно считать появление
+в 1990 году такого языка программирования как <a href="https://ru.wikipedia.org/wiki/Haskell">Haskell</a>.
+Он был создан специальным комитетом, чтобы объединить разрозненные
+на тот момент идеи ФП в одном языке и развивать их уже более 
+централизованно. Т.е. можно сказать что Haskell это своего рода
+лаборатория по изучению и исследованию всевозможных теорий
+из таких областей как: ФП, теория языков программирования, компиляторостроение.
+Этот язык оказал огромное влияние на последующие исследования в этих областях.
+<br>
+<br>
+На данный момент существует явная тенденция - большинство популярных и наиболее используемых языков
+программирования стремится к мультипарадигмальнности и чистых языков сейчас почти не найти. Даже такие консервативные языки как
+C++ и Java внедряют в свои новые версии элементы ФП, а в C# и вовсе существует встроенный язык запросов (eDSL) 
+под названием LINQ который позволяет писать элегантный и надежный код в функциональном стиле. Также хочется
+упомянуть язык Rust сочетающий в себе лучшие качества таких системных языков как C и C++ и функциональных языков
+семейства ML (SML, Ocaml, Haskell и пр.), он на протяжении уже нескольких лет подряд является
+любимым языком среди разработчиков по версии <a href="https://survey.stackoverflow.co/2022/#most-loved-dreaded-and-wanted-language-love-dread">Stackoverflow</a>.
+Что еще примечательно, 2-е и 3-е места в этом рейтинге занимают функциональные языки Elixir и Clojure (также диалект Lisp'а). 
+Поэтому если вы хотите стать более лучшими, профессиональными, а главное счастливыми программистами, то вы там где нужно! <br></p>
+<p>Успехов!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Знакомство-с-racket-и-drracket"><a class="header" href="#Знакомство-с-racket-и-drracket">Знакомство с Racket и DrRacket</a></h1>
+<p>Сперва стоит ответить на два вопроса - почему нельзя обойтись одним только Python'ом и почему Racket, почему
+не какой-нибудь другой функциональный язык, например чисто функциональный Haskell или более близкий к Python язык Scala <del>(ИМХО)</del>?
+Отвечая на первый вопрос скажу что вполне можно было обойтись одним Python'ом, но по личному опыту
+писать в функциональном стиле на нем не особо приятно. Это будет заметно при сравнении различных
+сниппетов кода ниже. Отвечая на второй вопрос могу сказать что Racket, во-первых, довольно прост в своей
+основе, во-вторых, использование Scheme (Racket - диалект Scheme) в учебных целях
+уже считается некой традицией, в-третьих, не придется ломать вас через колено как было бы используй
+я Haskell вместо Racket. В качестве примера приведу следующие сниппеты:</p>
+<pre><code class="language-python"># python
+def sum(n1, n2):
+    return n1 + n2
+</code></pre>
+<pre><code class="language-racket">; racket
+(define (sum n1 n2)
+    (+ n1 n2))
+</code></pre>
+<pre><code class="language-haskell">-- haskell
+sum :: Int -&gt; Int -&gt; Int
+sum = (+)
+-- или просто
+sum = (+)
+</code></pre>
+<pre><code class="language-scala">// scala
+def sum(n1: Int, n2: Int): Int = n1 + n2
+</code></pre>
+<p>Надеюсь я ответил на эти вопросы.</p>
+<p>Помимо этого вспоминаются такие слова известного ученого в области информатики
+Эдгара Дийкстры: <br>
+&quot;It is practically impossible to teach good programming to students
+that have had a prior exposure to BASIC: as potential
+programmers they are mentally mutilated beyond hope of
+regeneration.&quot;</p>
+<p>В моей картине мира Python - новый BASIC.
+Поэтому я хочу &quot;спасти&quot; вас, научить более правильному и разумному языку
+программирования между тем обучив паре тройке приемов которым вы вряд ли
+научитесь на работе.</p>
+<p>Я люблю цитаты, поэтому вот еще одна: <br>
+«Выбор языка программирования играет важную роль.
+Он влияет на надежность, безопасность и эффективность программ,
+а также простоту чтения кода, его рефакторинга и расширения.
+Языки способны также влиять на образ мышления программиста
+и приемы проектирования программ,
+даже когда они не используются.» <br>
+Программирование на языке Ocaml</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Установка-и-настройка-среды-drracket"><a class="header" href="#Установка-и-настройка-среды-drracket">Установка и настройка среды DrRacket</a></h1>
+<p>Прежде чем приступить к обсуждению всех вышеперечисленных интересностей, необходимо
+определится где мы будем писать код на Racket (я рассчитываю что Python у вас уже установлен)). Есть два <del>стула</del> способа:</p>
+<ol>
+<li>Веб-ресурс <a href="https://onecompiler.com/racket">OneCompiler</a></li>
+<li>Или локально</li>
+</ol>
+<p>Я настоятельно рекомендую все делать локально, потому что так надежнее, но решать где вы будете писать код все равно не мне.
+Поэтому если вы решили всё делать онлайн, то можете приступать к следующему уроку.
+<br>
+<br>
+Чтобы начать работу локально нам необходимо установить сам язык Racket и среду разработки DrRacket (они идут совместной поставкой).
+Для этого перейдем на <a href="https://download.racket-lang.org/">официальный сайт</a>.
+Выбирайте нужную платформу если она не выбралась автоматически и скачивайте инсталлятор. Если возникли трудности
+со скачиванием, то пробуйте через зеркала (mirror). Процесс установки довольно стандартен и трудностей вызывать не должен.
+После завершения установки следует проверить ее успешность, для этого откроем консоль и введем <code>racket</code>.
+После чего запустится <a href="https://ru.wikipedia.org/wiki/REPL">REPL (Read-Eval-Print-Loop)</a>. Аналогичный для Python
+можно запустить командой <code>python</code> или <code>python3</code>. Введите <code>'hello-world</code>, REPL вернет вам это же значение. Вот мы и
+написали первую программу на Racket!</p>
+<p>Теперь давайте разберемся с DrRacket. Его можно запустить через консоль командой <code>drracket</code> или просто через
+соответсвующую иконку. Когда DrRacket загрузится вы увидите что-то такое:</p>
+<p><img src="l_1/l_0/../../img/l_1/1.png" alt="" /></p>
+<p>Сосредоточимся сперва на основном окне. На скриншоте выше запечатлены две строки <del>(пустую не считаем)</del>.
+В первой указывается специальная директива говорящая и нам и самому Racket какой язык мы хотим использовать.
+Среда DrRacket предоставляет в ваше распоряжение несколько разных языков, но все они нам не интересны. Мы будем
+пользоваться только стандартным Racket (или некоторыми его расширениями, что будет указано), поэтому дальше
+<code>#lang racket</code> будет опускаться. Такая директива используется только когда мы работаем непосредственно в
+DrRacket или с файлами программ, в REPL нам ничего указывать не нужно, но можно. Также обратите внимание на нижний
+левый угол где написано <code>Determine language from source</code>. Если у вас там написано нечто иное, то нажмите на эту надпись
+и выберите то что у меня.</p>
+<p>Чтобы запустить программу, нажмите <code>Run</code> в правом верхнем углу. Программа отработает последовательно, сверху-вниз,
+а результат выведется в нижней части окна предназначенной под REPL.</p>
+<p>Чтобы сохранить результат своей работы, нажмите <code>Ctrl-S</code> или выберите <code>File-&gt;Save Definitions</code>.
+Поизучайте интерфейс, посмотрите какие есть настройки, что делают те или иные кнопки.
+Если у вас туго с английским, то можете выбрать <code>Help-&gt;Работать с русским интерфейсом DrRacket</code>, но
+если в дальнейшем я буду обращаться к каким либо элементам интерфейса, то буду приводить названия
+на английском языке, так что имейте это в виду.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Пробуем-racket-на-вкус"><a class="header" href="#Пробуем-racket-на-вкус">Пробуем Racket на вкус</a></h1>
+<p>Пара слов о Racket. Если вы открывали ссылку на википедию с главной страницы курса, то знаете
+что Racket - динамически типизированный, мультипарадигмальный язык программирования.
+Несмотря на поддержку разных парадигм, как и во многих других языках в Racket преобладает только одна,
+в данном случае функциональная. Также это диалект <a href="https://ru.wikipedia.org/wiki/Scheme">диалекта</a> 
+Lisp, что сильно сказывается на всем дизайне языка, начиная от очевидно повсеместных круглых скобок 
+для структурирования кода, заканчивая мощной макросистемой и общим подходом к построению программ.</p>
+<p>В начале изучения какого-либо языка первым дело традиционно демонстрируют Hello World, т.е. минимально
+работающую программу. По сути вы уже видели ее на скриншоте в предыдущем уроке - <code>'hello-world</code>.
+Это называется <em>символом</em>. Символы - специальный тип данных, значения которых возвращают сами себя.
+Что это значит? Давайте посмотрим более наглядно - запустим REPL введя <code>racket</code> в консоли, или запустив
+DrRacket, затем введем <code>'hello-world</code>, в ответ нам вернется то же самое, т.е. <code>'hello-world</code>.
+Для сравнения введем какое-нибудь арифметическое выражения, например 1 + 2, в Racket это будет
+выглядеть как <code>(+ 1 2)</code> (это называется префиксной нотацией, ее рассмотрим чуть позже). В общем виде
+ваша работа с REPL должна выглядеть как-то так:</p>
+<pre><code class="language-racket">&gt; 'hello-world
+'hello-world
+&gt; (+ 1 2)
+3
+</code></pre>
+<p>В Python'е это выглядело бы примерно так:</p>
+<pre><code class="language-python">&gt;&gt;&gt; &quot;hello-world&quot;
+'hello-world'
+&gt;&gt;&gt; 1 + 2
+3
+</code></pre>
+<p>В Python'е нет символьного типа данных, поэтому пришлось воспользоваться строковым литералом.
+Для тех кто не знаком с понятием литерала, литерал - представление значения определенного типа в исходном
+коде. Если ввести <code>hello-world</code> в вызове <code>print(input())</code>, то это не будет литералом. </p>
+<p>Racket различает символьный и строковый типы данных. Если коротко, то символы эффективней, а строки
+удобней и выразительней. Я думаю вы уже знаете из вашего опыта работы с Python для чего используются строки.
+Символы же могут использоваться для создания легковесных перечислений, к примеру можно создать перечисление 
+месяцев воспользовавшись списками (они также подробнее будут рассмотрены позднее):</p>
+<pre><code class="language-racket">&gt; (list 'декабрь 'январь 'февраль)
+'(декабрь январь февраль)
+; или
+&gt; '(декабрь январь февраль)
+</code></pre>
+<p>Тут уже заметны некоторые интересные моменты, попробуйте помедитировать над этим примером, поиграть с ним.
+Пока лишь скажу что обе формы допустимы, и зачастую эквивалентны, но не всегда. Обычно рекомендуется
+использовать первый вариант, я же буду стараться следовать этой рекомендации, но иногда все же пользоваться
+вторым вариантом. Подобное же в Python:</p>
+<pre><code class="language-python">&gt;&gt;&gt; [&quot;декабрь&quot;, &quot;январь&quot;, &quot;февраль&quot;]
+['декабрь', 'январь', 'февраль']
+</code></pre>
+<p>Существуют и другие применения символов. Например в качестве ключа для структуры <a href="https://ru.wikipedia.org/wiki/%D0%A5%D0%B5%D1%88-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0">hash-table</a>:</p>
+<pre><code class="language-racket">&gt; (define h (make-hash (list '(k 1))))
+&gt; (hash-ref h 'k)
+'(1)
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; h = {&quot;k&quot;: 1}
+&gt;&gt;&gt; h[&quot;k&quot;]
+1
+</code></pre>
+<p>Теперь давайте разберемся с префиксной нотацией. Как вы уже заметили что те же арифметические выражения
+в Racket'е выглядят иначе чем в том же Python, в котором используется инфиксная форма. Все дело в
+устройстве самого Racket'а - практически весь код в нем представлен списками. По началу это кажется
+странным и неудобным, но у этого есть свои бонусы, например кодом можно манипулировать также как и 
+обычными данными, так как код на Racket просто набор списков. Т.е. это примерно как если бы мы писали
+на Python как-то так:</p>
+<pre><code class="language-python">[def, add, (n1, n2), 
+    return, n1, +, n2]
+</code></pre>
+<pre><code class="language-racket">(define (add n1 n2)
+  (+ n1 n2))
+</code></pre>
+<p>И так как это обычный Python'овский список, то и делать с ним мы можем все то же самое что и с другими
+списками (в теории). Помимо этого префиксная запись избавляет нас от запоминания приоритетов, так как 
+все однозначно определяется расстановкой скобок. А также позволяет писать следующим образом:</p>
+<pre><code class="language-racket">&gt; (+ 1 2 3 4 5 6 7 8 9)
+45
+</code></pre>
+<pre><code class="language-python">&gt;&gt;&gt; 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9
+45
+</code></pre>
+<p>Надеюсь вам удалось прочувствовать вкус Racket'а.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Первые-шаги---функции"><a class="header" href="#Первые-шаги---функции">Первые шаги - функции</a></h1>
+<p>Так как мы в данном курсе рассматриваем функциональное программирование, то думаю стоит начать
+с того, на чем оно непосредственно основывается - с функций. Для чего предназначены функции?
+Обычно с их помощью избавляются от дублирующего кода. Когда вы видите в коде 
+несколько кусков делающих одно и то же, но с разными данными, то вы можете
+абстрагироваться по этим данным сделав их параметрами функции и таким образом избавиться
+от дублирования. Кто-то может спросить - а что плохого в дублировании? Отвечаю - дублирование делает код
+более хрупким и ненадежным. Есть даже целый принцип в программировании под названием 
+<a href="https://ru.wikipedia.org/wiki/Don%E2%80%99t_repeat_yourself">DRY (Don't Repeat Yourself)</a>. В качестве примера такой абстракции приведу следующий синтетический
+сниппет:</p>
+<pre><code class="language-python">list1 = [1, 2, 3]
+result1 = 0
+for i in list1:
+    result1 += i
+    
+list2 = [4, 5, 6]
+result2 = 0
+for i in list2:
+    result2 += 1
+</code></pre>
+<p>Если вдруг мы захотим к примеру выводить каждое суммируемое число, то нам нужно будет
+изменить два места:</p>
+<pre><code class="language-python">list1 = [1, 2, 3]
+result1 = 0
+for i in list1:
+    print(i) # 1
+    result1 += i
+    
+list2 = [4, 5, 6]
+result2 = 0
+for i in list2:
+    print(i) # 2
+    result2 += 1
+</code></pre>
+<p>А если таких мест в программе много, то можно легко ошибиться и забыть про одно из них, тогда
+в вашем коде будет неприятная логическая ошибка. Чтобы избавиться от подобных потенциальных ошибок и
+просто-напросто облегчить нам самим жизнь, мы создаем следующую функцию:</p>
+<pre><code class="language-python">def sum(list):
+    result = 0
+    for i in list:
+        result += i
+    return result
+</code></pre>
+<p>А теперь уберем из изначального варианта циклы и заменим их вызовом только что написанной функции <code>sum</code>:</p>
+<pre><code class="language-python">list1 = [1, 2, 3]
+result1 = sum(list1)
+    
+list2 = [4, 5, 6]
+result2 = sum(list2)
+</code></pre>
+<p>Теперь, чтобы добавить отладочный вывод, нам требуется изменить лишь одно место в программе:</p>
+<pre><code class="language-python">def sum(list):
+    result = 0
+    for i in list:
+        print(i) # 1
+        result += i
+    return result
+</code></pre>
+<hr />
+<p>Мы увидели как на практике использовать функции, теперь давайте немного разберемся с теорией.
+Я не буду приводить грамматики описывающие синтаксис, вместо этого приведу
+немного более наглядный, но достаточно абстрактный пример синтаксиса функций в Python:</p>
+<pre><code class="language-python">def f(param1, param2, ..., paramn):
+    ...
+    return result
+</code></pre>
+<p>Отсюда можно выделить следующие ключевые моменты:</p>
+<ul>
+<li>Всякая функция должна начинаться с ключевого слова <code>def</code>.</li>
+<li>Затем идет имя функции (в примере это <code>f</code>).</li>
+<li>После имени, в круглых скобках через запятую перечисляются параметры принимаемые функцией.</li>
+<li><code>:</code>,</li>
+<li>после которого идет тело функции. Оно может содержать произвольный код на Python'е.</li>
+<li>Чтобы вернуть некоторый результат, требуется использовать конструкцию <code>return</code> (опционально).</li>
+</ul>
+<p>Функции в Python могут быть и сложнее чем то что описано выше, например могут использоваться
+глобальные параметры (<code>global</code>), <code>*args, **kwargs</code>, аннотации типов, декораторы, async/await и пр. 
+Но для нас сейчас это все несущественно. Теперь давайте сравним это с Racket:</p>
+<pre><code class="language-racket">(define (f param1 param2 ... paramn)
+    expr1
+    expr2
+    ...
+    exprn)
+</code></pre>
+<p>Где:</p>
+<ul>
+<li>Вся функция оборачивается в круглые скобки.</li>
+<li>Ключевое слово для объявления функции немного длиннее - <code>define</code> которое в принципе означает связывание имени со 
+значением, т.е. применимо не только для функций.</li>
+<li>После объявления связывания в скобках, через пробел указываются имя функции и ее параметры.</li>
+<li>Отсутствует конструкция <code>return</code>, а в качестве возвращаемого значения используется последнее выражение (всегда).</li>
+</ul>
+<p>Чтобы лучше прочувствовать вкус Racket я приведу несколько более конкретный пример:</p>
+<pre><code class="language-python"># python
+def sum(n):
+    sum = 0
+    for i in range(0, n+1):
+        sum += i
+    return sum
+</code></pre>
+<pre><code class="language-racket">; racket
+(define (sum n)
+  (let ([sum 0])
+    (for ([i (range (+ n 1))])
+      (set! sum (+ sum i)))
+    sum))
+</code></pre>
+<p>Такой код получился при буквальном переводе с языка на язык, такое на самом деле не приветствуется не только
+в естественных языках. В дальнейшем мы будем постепенно изменять (рефакторить) эту функцию делая ее
+более идиоматичной (подходящей для конкретного языка/подхода).</p>
+<p>Обратите внимание на предпоследнюю строку, точнее на функцию <code>set!</code>. Она используется для переприсваивания
+значения переменной. Знак <code>!</code> не просто так содержится в ее имени, он указывает на то что функция создает <a href="https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B1%D0%BE%D1%87%D0%BD%D1%8B%D0%B9_%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82_(%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)">побочный эффект</a> 
+во время своей работы. Тема побочных эффектов подробнее будет раскрыта позже, пока стоит лишь запомнить 
+что такие функции рекомендуется использовать как можно реже.</p>
+<p>Еще раз посмотрите на код. Возможно в нем вас пугает обилие скобочек, но это дело привычки на самом деле, при правильном 
+форматировании на скобочки почти не обращаешь внимания и код на Racket читается не хуже чем код на Python. К тому же такой 
+синтаксис оправдан, он дает некоторые <a href="https://ru.wikipedia.org/wiki/%D0%93%D0%BE%D0%BC%D0%BE%D0%B8%D0%BA%D0%BE%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D1%81%D1%82%D1%8C">интересные особенности</a> 
+благодаря которым мы можем лепить из такого языка практически все что нам угодно.</p>
+<hr />
+<p>В одном из предыдущих уроков я рассказывал про анонимные функции, давайте вспомним как они пишутся в
+Python:</p>
+<pre><code class="language-python">lambda param1, param2, ..., paramn: expr
+</code></pre>
+<p>Что мы видим здесь:</p>
+<ul>
+<li>Лямбда объявляется с помощью ключевого слова <code>lambda</code>,</li>
+<li>после которого идет список параметров.</li>
+<li><code>:</code>,</li>
+<li>за которым идет тело лямбды.</li>
+</ul>
+<p>Также считаю важным отметить тот момент, что лямбды в Python ограничены, в них нельзя указывать произвольное 
+кол-во выражений. Давайте теперь сравним с Racket:</p>
+<pre><code class="language-racket">(lambda (param1 param2 ... paramn) expr1 expr2 ... exprn)
+; или
+(λ (param1 param2 ... paramn) expr1 expr2 ... exprn)
+</code></pre>
+<p>Тут также используется ключевое слово lambda (или символ лямбда - λ). После в скобках указывается
+список параметров. И наконец тело функции. В отличие от Python, Racket позволяет написать например следующий код:</p>
+<pre><code class="language-racket">(λ (x)
+  (displayln (* x 10))
+  (+ x 1))
+</code></pre>
+<p><del>Правда в Python есть свои <a href="https://buttondown.email/hillelwayne/archive/i-am-disappointed-by-dynamic-typing/">приколы</a>, более могущественные, но и более вербозные.</del></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Знакомство-с-рекурсией"><a class="header" href="#Знакомство-с-рекурсией">Знакомство с рекурсией</a></h1>
+<p>Наверняка когда вы слышите слово &quot;рекурсия&quot; у вас всплывает в голове нечто такое:</p>
+<p><img src="l_3/../img/l_3/1.png" alt="" /></p>
+<p>Нечто до бесконечности вложенное само в себя. И это равнозначно итерации с которой вы уже должны быть 
+знакомы. По аналогии со скриншотом выше итерирование я бы представил зацикленной <a href="https://vk.com/doc548038631_625822950">гифкой</a>. 
+Давайте теперь посмотрим как это выглядит в коде:</p>
+<pre><code class="language-python"># python - итерирование
+i = 0
+while True:
+    print(i)
+    i += 1
+</code></pre>
+<pre><code class="language-racket">; racket - итерирование
+(define i 0)
+(for ([loop (in-naturals)])
+  (displayln i)
+  (set! i (+ i 1)))
+  
+; или через локальные переменные
+
+(let ([i 0])
+  (for ([loop (in-naturals)])
+    (displayln i)
+    (set! i (+ i 1))))
+</code></pre>
+<p>Подобное поведение можно представить и через рекурсивные функции, т.е. функции определяемые через 
+самих себя:</p>
+<pre><code class="language-python"># python - рекурсия
+# не запускайте
+i = 0
+def infInc():
+    global i
+    print(i)
+    i += 1
+    infInc()
+infInc()
+</code></pre>
+<pre><code class="language-racket">; racket - рекурсия
+(define i 0)
+(define (inf-inc)
+  (begin
+    (displayln i)
+    (set! i (+ i 1))
+    (inf-inc)))
+(inf-inc)
+
+; или через локальные переменные
+
+; Y-combinator для эмуляции рекурсии
+(define Y (λ (b) ((λ (f) (b (λ (x) ((f f) x))))
+                  (λ (f) (b (λ (x) ((f f) x)))))))
+(let ([i 0])
+  (Y (λ (inf-inc)
+       (begin
+         (displayln i)
+         (set! i (+ i 1))
+         (Y inf-inc)))))
+</code></pre>
+<p>Этот код выполняет ровно ту же самую работу, что и примеры с циклами выше. Только здесь, в одном из примеров с кодом на Racket, 
+пришлось прибегнуть к особой функциональной магии под названием <a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%B1%D0%B8%D0%BD%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F_%D0%BB%D0%BE%D0%B3%D0%B8%D0%BA%D0%B0">комбинаторы</a>, 
+в любом случае пока не забивайте этим голову. Вместо итераций цикла
+мы имеем вызов функции. Все эти примеры будут выполняться бесконечно (на что намекает название функций),
+что зачастую бесполезно (если конечно вы не пишите сервера, GUI-фреймворк, игровой движок или что-то в этом духе),
+поэтому и цикл, и рекурсию можно прервать. Давайте разберем наиболее частые примеры использования 
+циклов с эквивалентными примерами переписанными через рекурсию: </p>
+<pre><code class="language-python"># python - обход коллекции с помощью цикла
+list = [1, 2, 3]
+for i in list:
+    print(i)
+</code></pre>
+<pre><code class="language-racket">; racket - обход коллекции с помощью цикла
+(define list '(1 2 3))
+(for ([i list])
+  (displayln i))
+</code></pre>
+<pre><code class="language-python"># python - обход коллекции с помощью рекурсии
+def printList(list):
+    if list == []:
+        return
+    print(list[0])
+    printList(list[1:])
+printList([1, 2, 3])
+</code></pre>
+<pre><code class="language-racket">; racket - обход коллекции с помощью рекурсии
+(define list '(1 2 3))
+(define (print-list list)
+  (if (empty? list)
+      '()
+      (begin
+        (displayln (car list))
+        (print-list (cdr list)))))
+(print-list list)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="Дополнительное-изучение"><a class="header" href="#Дополнительное-изучение">Дополнительное изучение</a></h1>
+<ul>
+<li><a href="https://github.com/KikyTokamuro/Simple-Functional-Programming">Основные понятия функционального программирования</a> - 
+веб-ресурс с примерами на Python и Scheme. На русском.</li>
+<li><a href="https://code-basics.com/ru/languages/racket">Racket как второй язык</a> -
+веб-ресурс для изучения основ Racket. На русском.</li>
+<li><a href="https://github.com/caiorss/Functional-Programming">Functional Programming by Example</a> -
+веб-ресурс с примерами на Haskell, Ocaml и Python. На английском.</li>
+<li><a href="https://anton-k.github.io/ru-haskell-book/book/home.html">Учебник по Haskell</a> -
+веб-ресурс с примерами на Haskell. Грамотным языком рассказывается про &quot;самый функциональный язык&quot;. На русском.</li>
+<li><a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0_%D0%B8_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BF%D1%80%D0%B5%D1%82%D0%B0%D1%86%D0%B8%D1%8F_%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D1%8B%D1%85_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC">Структура и интерпретация компьютерных программ или SICP</a> -
+фундаментальная книга с примерами на Scheme, очень рекомендую. Есть издание на русском языке.</li>
+<li><a href="https://en.wikipedia.org/wiki/How_to_Design_Programs">Как проектировать программы</a> -
+книга доступно и постепенно обучающая тому как писать программы с примерами на Racket. Идеально подойдет для изучения 
+основ программирования. Есть издание на русском языке. </li>
+<li><a href="https://mitpress.mit.edu/9780262045490/software-design-for-flexibility/">Software Design for Flexibility</a> -
+книга от одного из авторов SICP о написании сложных программных систем с примерами на Scheme. На английском.</li>
+<li><a href="https://www.ozon.ru/product/chisto-funktsionalnye-struktury-dannyh-161681249/?sh=xx6OqcFoxw">Чисто функциональные структуры данных</a> -
+книга с примера на Ocaml и Haskell. Есть издание на русском языке.</li>
+<li><a href="https://graninas.com/functional-design-and-architecture-book/">Functional Design and Architecture</a> -
+книга для продвинутых по проектированию программ на функциональных языках с примерами на Haskell. На английском.</li>
+<li><a href="https://algebradriven.design/">Algebra-Driven Design</a> -
+аналогично с предыдущей.</li>
+<li>Много чего еще для других языков. Ищите, ибо ищущий да обрящет.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>

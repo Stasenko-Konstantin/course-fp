@@ -154,9 +154,3 @@ lambda param1, param2, ..., paramn: expr
   (+ x 1))
 ```
 ~~Правда в Python есть свои [приколы](https://buttondown.email/hillelwayne/archive/i-am-disappointed-by-dynamic-typing/), более могущественные, но и более вербозные.~~
-
-[содержание](../../README.md)
-<br>
-[назад](../l_1/l_1/README.md)
-<br>
-[дальше](../l_3/README.md)
