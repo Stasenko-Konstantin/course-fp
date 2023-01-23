@@ -43,6 +43,13 @@ Github: Stasenko-Konstantin
 git clone https://github.com/Stasenko-Konstantin/course-fp.git
 ```
 или же скачать zip-архив по [этой ссылке](https://github.com/Stasenko-Konstantin/course-fp/archive/refs/heads/main.zip)
+
+Затем выполните скрипт:
+```bash
+python3 open.py
+```
+Это откроет браузер с локальной версией курса.
 <br><br>
 
-Крайне советую переходить по ссылкам, там очень много всего интересного.
+Также крайне советую переходить по ссылкам разбросанным по всему курсу, 
+там очень много всего интересного.
