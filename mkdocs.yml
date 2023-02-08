@@ -1,0 +1,16 @@
+site_name: Курс Функционального Программирования
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+nav:
+  - Предисловие: index.md
+  - Содержание: summary.md
+  - Шпаргалка: cheatsheet.md
+  - Введение: l_0.md
+  - Знакомство с Clojure: l_1.md
+  - Первые шаги - функции: l_2.md
+  - Знакомство с рекурсией: l_3.md
+  - Дальнейшее изучение: learn.md
